@@ -1,0 +1,29 @@
+<%= form_for @appointment do |f| %>
+    <%= f.label :day %>
+        <%= f.datetime_field :day %> <br>
+
+    <%= f.label :services %>
+        <%= f.select :services, options_for_select(["blowdry/styling", "color", "perm", "eyelashes"]) %> <br>
+    <%= f.label :price %> 
+        <%= f.number_field :price %> <br>
+     <%= f.label :length %>
+        <%= f.number_field :length %><br>
+    <%= f.label :stylist_id %>
+        <%= f.collection_select :stylist_id, Stylist.all, :id, :name %><br>
+          <%= f.label :client_id %>
+        <%= f.collection_select :client_id, Client.all, :id, :name %><br>
+    <%= f.submit %>
+
+    <br><br>
+<h1> Add a new client! </h1>
+      <%= f.fields_for :client do |f| %>
+       <%= f.label :name %>
+        <%= f.text_field :name %><br>
+    <%= f.label :phone_number %>
+        <%= f.number_field :phone_number %><br>
+    <%= f.submit %>
+    <% end %>
+<% end %>
+
+    
+    

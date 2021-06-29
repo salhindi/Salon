@@ -8,4 +8,5 @@ class User < ApplicationRecord
     
     has_many :appointments
     has_many :stylists
+    has_many :clients
 end

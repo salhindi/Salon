@@ -13,7 +13,7 @@ class StylistsController < ApplicationController
     end
 
     def show
-        
+        @stylist = Stylist.find(params[:id])   
     end
 
     private
