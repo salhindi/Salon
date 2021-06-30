@@ -11,7 +11,13 @@
   </head>
 
   <body>
+    <%= link_to 'Home', '/users' %><br>
+    <%= link_to 'Book Appointment', '/appointments/new' %>
+    <br>
+    <%= link_to 'Add a New Stylist to the team!', '/stylists/new' %>
+    <br>
     <%= link_to 'Logout', '/logout', method: :delete %>
+    
     <%= yield %>
   </body>
 </html>

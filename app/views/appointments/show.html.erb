@@ -1,0 +1,10 @@
+<h1> Appointment with <%= @appointment.client.name.capitalize %> </h1>
+<h3> Date: <%= @appointment.day.strftime("%B %d,%Y") %> <br> </h3> 
+ <br>
+<%= @appointment.services %>    
+$<%= @appointment.price %> USD <br>
+
+<%= @appointment.client.name.capitalize %>'s Phone Number: <%= @appointment.client.phone_number %>
+<br><br>
+<h2> Stylist Assigned: <%= @appointment.stylist.name.capitalize %> <h2>
+Projected Duration: <%= @appointment.length %> hr
