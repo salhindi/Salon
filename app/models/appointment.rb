@@ -3,6 +3,8 @@ class Appointment < ApplicationRecord
     # belongs_to :user
     belongs_to :stylist
 
+    validates :day, :services, :price, :length, :stylist_id, :client_id, presence: :true
+
     # accepts_nested_attributes_for :client
 
     def client_attributes=(client_params)

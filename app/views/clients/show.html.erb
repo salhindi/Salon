@@ -1,2 +1,10 @@
-<%= @client.name %>
+<h2> <%= @client.name %>'s Appointments:</h2>
+<p> <% @client.appointments.each do |appt| %>
+<%= appt.day.strftime("%B %d,%Y, %l:%M %p" ) %> with
+<%= appt.stylist.name.capitalize %>
+<% end %>
+<p><%= link_to "Appointments", client_appointments_path(@client) %> |
+
+<%= link_to "Book Appointment", new_client_appointment_path(@client) %></p>
+
 

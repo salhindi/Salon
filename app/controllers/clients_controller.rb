@@ -1,5 +1,9 @@
 class ClientsController < ApplicationController
 
+    def index
+        @client = Client.all
+    end
+
     def new
         @client = Client.new
     end
@@ -14,6 +18,7 @@ class ClientsController < ApplicationController
     end
 
     def show
+        @client = Client.find(params[:id])
     end
 
     private

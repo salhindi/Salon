@@ -15,6 +15,7 @@
     <%= f.submit %>
 
     <br><br>
+    <% if !params[:client_id] %>
 <h1> Add a new client! </h1>
       <%= f.fields_for :client do |f| %>
         <%= f.label :name %>
@@ -26,6 +27,7 @@
         <%= f.hidden_field :user_id, value: current_user.id %>
     
     <%= f.submit %>
+    <% end %>
     <% end %>
 <% end %>
 

@@ -1,0 +1,7 @@
+<% @client.each do |client| %>
+    <br><%= client.name %><br>
+
+<%= link_to "Appointments", client_appointments_path(client) %> |
+
+<%= link_to "Book Appointment", new_client_appointment_path(client) %>
+<% end %>
