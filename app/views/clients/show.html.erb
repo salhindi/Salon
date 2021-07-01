@@ -9,8 +9,3 @@
 <p><%= link_to "Appointments", client_appointments_path(@client) %> |
 
 <%= link_to "Book Appointment", new_client_appointment_path(@client) %></p>
-
-
-<%= @client.appointments.appointments_today.each do |today| %>
-    <%= today.stylist %>
-    <% end %>

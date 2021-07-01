@@ -14,18 +14,45 @@
  *= require_tree .
  *= require simple_calendar
  */
+body {
+     background-image: url(https://images.unsplash.com/photo-1504198266287-1659872e6590?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80);
+     background-color: black;     
+     background-size: 100%;  
+     font-family: verdana, arial, helvetica, sans-serif;
+     font-size: 13px;      
+     color: rgb(35, 35, 72);                  
+     text-align: center;            
+}
+a {
+     text-decoration: none;      
+     font-family: Arial;    
+     font-size: 15px;       
+     font-weight: bold;         
+}
 
- body {
-    background-color: rgb(255, 255, 255);
-    color: #333;
-    font-family: verdana, arial, helvetica, sans-serif;
-    font-size: 13px;
-    line-height: 18px;
-  }
-  head {
-    background-color: rgb(27, 29, 69);
-    color: rgb(255, 255, 255);
-    font-family: verdana, arial, helvetica, sans-serif;
-    font-size: 13px;
-    line-height: 18px;
-  }
+a:link {             
+     color: white;
+}
+a:hover {
+     color:purple;
+}
+a:visited {
+     color: clear;
+}
+h1{                  
+}
+
+.container {
+}
+
+.nav a {                     <<<<can access nested tags this way
+}
+
+.simple-calendar {
+  
+}
+  
+.has-events {
+  background-color: white;
+}
+}

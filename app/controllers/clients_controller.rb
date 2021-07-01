@@ -1,11 +1,19 @@
 class ClientsController < ApplicationController
 
     def index
-        @client = Client.all
+        if !logged_in?
+            redirect_to login_path
+        else
+            @client = Client.all
+        end
     end
 
     def new
-        @client = Client.new
+        if !logged_in?
+            redirect_to login_path
+        else
+            @client = Client.new
+        end
     end
 
     def create
@@ -18,7 +26,11 @@ class ClientsController < ApplicationController
     end
 
     def show
+        if !logged_in?
+            redirect_to login_path
+        else
         @client = Client.find(params[:id])
+        end
     end
 
     private

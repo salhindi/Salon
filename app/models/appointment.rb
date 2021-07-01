@@ -7,8 +7,6 @@ class Appointment < ApplicationRecord
     validates_associated :client
 
     validate :stylist_appt_unique_date
-    
-    scope :appointments_today, -> { where(day: Date.today) }
 
 
     # accepts_nested_attributes_for :client
