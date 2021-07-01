@@ -1,7 +1,9 @@
-<%= form_for @appointment do |f| %>
+<%= render partial: "layouts/errors", locals: { object: @appointment } %>
+<%= render partial: "layouts/errors", locals: { object: @appointment.client } %>
+
+<%= form_for [@client, @appointment] do |f| %>
     <%= f.label :day %>
         <%= f.datetime_field :day %> <br>
-
     <%= f.label :services %>
         <%= f.select :services, options_for_select(["blowdry/styling", "color", "perm", "eyelashes"]), include_blank: true %> <br>
     <%= f.label :price %> 
@@ -13,9 +15,9 @@
           <%= f.label :client_id %>
         <%= f.collection_select :client_id, Client.all, :id, :name, include_blank: true %><br>
     <%= f.submit %>
-
+  
     <br><br>
-    
+
     <% if !params[:client_id] %>
 <h1> Add a new client! </h1>
       <%= f.fields_for :client do |f| %>

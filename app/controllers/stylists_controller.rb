@@ -8,7 +8,7 @@ class StylistsController < ApplicationController
         if @stylist.save
             redirect_to stylist_path(@stylist)
         else
-            redirect_to new_stylist_path(@stylist), alert: "#{@stylist.errors.full_messages}"
+            render :new
         end
     end
 
