@@ -19,6 +19,12 @@
     <br>
     <%= link_to 'Logout', '/logout', method: :delete %>
     
+
+    <% flash.each do |type, msg| %>
+      <div>
+        <%= msg %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -17,7 +17,7 @@ class AppointmentsController < ApplicationController
             @appointment = @client.appointments.build 
         else
             @appointment = Appointment.new
-            @appointment.build_client
+            @client = @appointment.build_client
         end
     end
 
@@ -31,7 +31,8 @@ class AppointmentsController < ApplicationController
         if @appointment.save
             redirect_to appointment_path(@appointment)
         else
-            render :new
+    
+            redirect_to new_appointment_path(@appointment), alert: "#{@appointment.errors.full_messages}"
         end
     end
     
