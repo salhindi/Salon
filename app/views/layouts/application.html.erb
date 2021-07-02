@@ -8,10 +8,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= link_to 'Home', '/users' %><br>
+   <%= link_to 'Home', '/users' %><br>
     <%= link_to 'Clients', '/clients' %> |
     <%= link_to "Add a Client", '/clients/new' %> |
     <%= link_to 'Book Appointment', '/appointments/new' %>
@@ -19,6 +16,9 @@
     <%= link_to 'Add a New Stylist to the team!', '/stylists/new' %>
     <br>
     <%= link_to 'Logout', '/logout', method: :delete %>
+  </head>
+  <body>
+   
 
     <%= yield %>
   </body>

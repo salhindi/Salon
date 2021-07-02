@@ -41,8 +41,31 @@ class AppointmentsController < ApplicationController
         if !logged_in?
             redirect_to login_path
         else
-        @appointment = Appointment.find(params[:id])
+            @appointment = Appointment.find(params[:id])
         end
+    end
+
+    def edit
+        if !logged_in?
+            redirect_to login_path 
+        else
+            @appointment = Appointment.find_by(params[:id])
+        end
+    end
+
+    def update
+        @appointment = Appointment.find_by_id(params[:id])
+        if @appointment.update(appt_params)
+            redirect_to appointment_path(@appointment)
+        else
+            render :edit 
+        end
+    end
+
+    def destroy
+        @appointment = Appointment.find(params[:id])
+        @appointment.destroy
+        redirect_to root_path
     end
 
     private

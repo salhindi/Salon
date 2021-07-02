@@ -1,6 +1,5 @@
 class Appointment < ApplicationRecord
     belongs_to :client
-    # belongs_to :user
     belongs_to :stylist
 
     validates :day, :services, :price, :length, :stylist_id, presence: :true
@@ -9,13 +8,13 @@ class Appointment < ApplicationRecord
     validate :stylist_appt_unique_date
 
 
-    # accepts_nested_attributes_for :client
+     accepts_nested_attributes_for :client
 
-    def client_attributes=(client_params)
-        {name: "Client"}
-        Client.find_or_create_by(client_params)
-        client_params[:name].empty? ? self.client : self.client = client
-    end
+    # def client_attributes=(client_params)
+    #     {name: "Client"}
+    #     Client.find_or_create_by(client_params)
+    #     client_params[:name].empty? ? self.client : self.client = client
+    # end
 
     def start_time
         self.day
@@ -25,5 +24,9 @@ class Appointment < ApplicationRecord
         if Appointment.find_by(day: day, stylist_id: stylist_id)
             errors.add(:day, "The stylist is already assigned to this day")
         end
+    end
+
+    def show_date
+        self.day.strftime("%B %d,%Y, %l:%M %p")
     end
 end

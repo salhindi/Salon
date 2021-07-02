@@ -24,6 +24,10 @@ gem 'jbuilder', '~> 2.7'
 
  gem "simple_calendar", "~> 2.4"
 
+gem 'omniauth-google-oauth2'
+gem 'omniauth'
+gem 'dotenv-rails'
+gem 'omniauth-github'
 
 group :assets do
   gem 'jquery-ui-rails'

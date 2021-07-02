@@ -1,0 +1,16 @@
+<%= render partial: "layouts/errors", locals: { object: @appointment } %>
+<%= form_for @appointment do |f| %>
+    <%= f.label :day %>
+        <%= f.datetime_field :day %> <br>
+    <%= f.label :services %>
+        <%= f.select :services, options_for_select(["blowdry/styling", "color", "perm", "eyelashes"]), include_blank: true %> <br>
+    <%= f.label :price %> 
+        <%= f.number_field :price %> <br>
+     <%= f.label :length %>
+        <%= f.number_field :length %><br>
+    <%= f.label :stylist_id %>
+        <%= f.collection_select :stylist_id, Stylist.all, :id, :name, include_blank: true %><br>
+          <%= f.label :client_id %>
+        <%= f.collection_select :client_id, Client.all, :id, :name, include_blank: true %><br>
+    <%= f.submit %>
+    <% end %>

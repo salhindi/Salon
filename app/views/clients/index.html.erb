@@ -1,5 +1,5 @@
 <% @client.each do |client| %>
-    <br><%= link_to "#{client.name}", client_path(client) %><br>
+    <br><%= link_to "#{client.name.capitalize}", client_path(client) %><br>
 
 <%= link_to "Appointments", client_appointments_path(client) %> |
 

@@ -7,6 +7,8 @@ class Client < ApplicationRecord
     validates_length_of :phone_number, is: 10
     validates :phone_number, numericality: true
 
+    scope :alphabetical, -> { Client.order(name: :asc) }
+
     has_many :appointments
     has_many :stylists, through: :appointments
 end

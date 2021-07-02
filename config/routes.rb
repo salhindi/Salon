@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   end
   resources :users
 
+  get '/auth/:provider/callback' => 'sessions#omniauth'
+
   get '/signup' => "users#new"
   post '/signup' => "users#create"
 

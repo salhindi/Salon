@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
         if !logged_in?
             redirect_to login_path
         else
-            @client = Client.all
+            @client = Client.all.alphabetical
         end
     end
 

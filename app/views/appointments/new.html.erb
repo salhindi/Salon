@@ -2,24 +2,32 @@
 <%= render partial: "layouts/errors", locals: { object: @appointment.client } %>
 
 <%= form_for [@client, @appointment] do |f| %>
+    <div class="field_with_errors">
     <%= f.label :day %>
         <%= f.datetime_field :day %> <br>
+
     <%= f.label :services %>
         <%= f.select :services, options_for_select(["blowdry/styling", "color", "perm", "eyelashes"]), include_blank: true %> <br>
-    <%= f.label :price %> 
+    
+    <%= f.label :price, "Price $" %> 
         <%= f.number_field :price %> <br>
-     <%= f.label :length %>
-        <%= f.number_field :length %><br>
+
+     <%= f.label :length , "Appointment Length" %>
+        <%= f.number_field :length %><br> hrs
+
     <%= f.label :stylist_id %>
         <%= f.collection_select :stylist_id, Stylist.all, :id, :name, include_blank: true %><br>
+          
           <%= f.label :client_id %>
         <%= f.collection_select :client_id, Client.all, :id, :name, include_blank: true %><br>
+    </div>
     <%= f.submit %>
   
     <br><br>
 
     <% if !params[:client_id] %>
 <h1> Add a new client! </h1>
+    <div class="field_with_errors">
       <%= f.fields_for :client do |f| %>
         <%= f.label :name %>
             <%= f.text_field :name %><br>
@@ -28,7 +36,7 @@
             <%= f.number_field :phone_number %><br>
     
         <%= f.hidden_field :user_id, value: current_user.id %>
-    
+        </div>
     <%= f.submit %>
     <% end %>
     <% end %>

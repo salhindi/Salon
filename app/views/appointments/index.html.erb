@@ -4,7 +4,7 @@
   <% appointments.each do |appointment| %>
     <div>
 Client: <%= appointment.client.name %>
-      <br> Stylist: <%= appointment.stylist.name.capitalize %>
+      <br> Stylist: <%= appointment.stylist_name %>
       <br>
       <%= appointment.day.strftime("%l:%M %p") %>
 
