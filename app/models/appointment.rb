@@ -37,4 +37,6 @@ class Appointment < ApplicationRecord
           errors.add(:appointment, "can't be in the past")
         end
       end
+
+    
 end

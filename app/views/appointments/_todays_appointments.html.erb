@@ -1,0 +1,19 @@
+<h2>Today's Appointments:</h2>
+
+<% if if_appt_today %>
+
+    <%= @appointments.each do |appointment|%>
+    <ul>
+        <li><%= appointment.client.name.titleize %> on <%= appointment.show_date %></h3>
+            <br>
+        <%= appointment.services.titleize %> |  $<%= appointment.price %> USD <br>
+            <br>
+        Stylist Assigned: <%= appointment.stylist.name.titleize %> | Projected Duration: <%= appointment.length %> hr</li>
+            <br><br>
+    <ul>
+        <%= link_to "Edit Appointment", edit_appointment_path(appointment)%> 
+            <br>
+    <%= button_to "Delete", appointment_path(appointment), method: :delete %>
+        <br>
+    <% end %>
+<% end %>
