@@ -29,7 +29,7 @@ class Appointment < ApplicationRecord
     end
 
     def show_date
-        self.day.strftime("%B %d,%Y, %l:%M %p")
+        self.day.strftime("%B %d, %Y, %l:%M %p")
     end
 
     def appointment_cannot_be_in_the_past

@@ -1,6 +1,8 @@
-<br><br>
-<%= @stylist.name %>
+<h1>Stylist Profile:</h1>
+        <p>Name: <%= stylist_name %></p>
+        <p>Years Experience: <%= @stylist.yrs_experience %></p>
+        <p>Phone_number: <%= stylist_number %></p>
 <br>
-<%= link_to "Edit Client Info", edit_client_path%>
+<%= link_to "Edit Stylist Info", edit_stylist_path%> |
 
 <%= link_to "Book Appointment with this Stylist", new_stylist_appointment_path(@stylist) %></p>

@@ -1,15 +1,11 @@
-<h3>Appointment with <%= appt_client_name %></h3>
-Date: <%= @appointment.show_date %> <br> 
- <br>
-<%= @appointment.services %>    
-$<%= @appointment.price %> USD <br>
-
-<%= appt_client_name %>'s Phone Number: <%= appt_client_number %>
-<br><br>
-Stylist Assigned: <%= appt_stylist_name %>
-Projected Duration: <%= @appointment.length %> hr
-
-<br>
-<%= link_to "Edit Appointment", edit_appointment_path%>
+<h3>Appointment with <%= appt_client_name %> on <%= @appointment.show_date %></h3>
+        <br>
+            <%= @appointment.services.titleize %> |  $<%= @appointment.price %> USD <br>
+        <br>
+            Stylist Assigned: <%= appt_stylist_name %> | Projected Duration: <%= @appointment.length %> hr
+        <br>    
+            <%= appt_client_name %>'s Phone Number: <%= appt_client_number %>
+        <br><br>
+        <%= link_to "Edit Appointment", edit_appointment_path%> 
     <br>
 <%= button_to "Delete", appointment_path(@appointment), method: :delete %>

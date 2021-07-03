@@ -12,6 +12,7 @@
   
   <body>
 
+  <div class="m auto">
   <div class="container">
     <nav class="navbar">
       <% if !logged_in? %>
@@ -32,8 +33,11 @@
     </nav>
    <% end %>
    </div>
-  <div class="container">
+   </div>
+
+  <main class="container" style="min-height: 500 px;">
     <%= yield %>
-  </div>
+  </main>
+
   </body>
 </html>
