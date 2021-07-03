@@ -1,4 +1,8 @@
-<%= render partial: "layouts/errors", locals: { object: @user } %>
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
 
 <h1> Log in!</h1>
 
