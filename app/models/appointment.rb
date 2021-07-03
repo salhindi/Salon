@@ -7,14 +7,7 @@ class Appointment < ApplicationRecord
 
     validate :stylist_appt_unique_date
 
-
-     accepts_nested_attributes_for :client
-
-    # def client_attributes=(client_params)
-    #     {name: "Client"}
-    #     Client.find_or_create_by(client_params)
-    #     client_params[:name].empty? ? self.client : self.client = client
-    # end
+    accepts_nested_attributes_for :client
 
     def start_time
         self.day
@@ -26,7 +19,5 @@ class Appointment < ApplicationRecord
         end
     end
 
-    def show_date
-        self.day.strftime("%B %d,%Y, %l:%M %p")
-    end
+    
 end

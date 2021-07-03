@@ -1,14 +1,12 @@
 class StylistsController < ApplicationController
+    before_action :require_login
+
     def index
         @stylist = Stylist.all
     end
 
     def new
-        if !logged_in?
-            redirect_to login_path
-        else
         @stylist = Stylist.new
-        end
     end
 
     def create
@@ -21,11 +19,7 @@ class StylistsController < ApplicationController
     end
 
     def show
-        if !logged_in?
-            redirect_to login_path
-        else
         @stylist = Stylist.find(params[:id])   
-        end
     end
 
     private

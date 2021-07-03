@@ -1,19 +1,13 @@
 class ClientsController < ApplicationController
+    before_action :require_login
+
 
     def index
-        if !logged_in?
-            redirect_to login_path
-        else
-            @client = Client.all.alphabetical
-        end
+        @client = Client.all.alphabetical
     end
 
     def new
-        if !logged_in?
-            redirect_to login_path
-        else
-            @client = Client.new
-        end
+        @client = Client.new
     end
 
     def create
@@ -26,11 +20,7 @@ class ClientsController < ApplicationController
     end
 
     def show
-        if !logged_in?
-            redirect_to login_path
-        else
         @client = Client.find(params[:id])
-        end
     end
 
     private
