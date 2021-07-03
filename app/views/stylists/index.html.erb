@@ -1,4 +1,4 @@
 <br>
 <% @stylist.each do |stylist| %>
-    <%= stylist.name %>
+    <%= link_to stylist.name, stylist_path(stylist) %>
 <% end %>

@@ -22,6 +22,19 @@ class StylistsController < ApplicationController
         @stylist = Stylist.find(params[:id])   
     end
 
+    def edit
+        @stylist = Stylist.find_by(params[:id])
+    end
+
+    def update
+        @stylist = Stylist.find_by_id(params[:id])
+        if @stylist.update(stylist_params)
+            redirect_to stylist_path(@stylist)
+        else
+            render :edit 
+        end
+    end
+
     private
 
     def stylist_params

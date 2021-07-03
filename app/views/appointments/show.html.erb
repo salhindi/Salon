@@ -11,4 +11,5 @@ Projected Duration: <%= @appointment.length %> hr
 
 <br>
 <%= link_to "Edit Appointment", edit_appointment_path%>
+    <br>
 <%= button_to "Delete", appointment_path(@appointment), method: :delete %>

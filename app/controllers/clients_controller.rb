@@ -23,6 +23,19 @@ class ClientsController < ApplicationController
         @client = Client.find(params[:id])
     end
 
+    def edit
+        @client = Client.find_by(params[:id])
+    end
+
+    def update
+        @client = Client.find_by_id(params[:id])
+        if @client.update(client_params)
+            redirect_to client_path(@client)
+        else
+            render :edit 
+        end
+    end
+
     private
 
     def client_params

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'users#index'
 
-  resources :stylists
+  resources :stylists do
+    resources :appointments, only: [:index, :new, :create]
+  end
   resources :appointments
   resources :clients do
     resources :appointments, only: [:index, :new, :create]
