@@ -13,6 +13,7 @@ class Appointment < ApplicationRecord
     def client_attributes=(client_params)
         {name: "Client"}
         Client.find_or_create_by(client_params)
+        client_params[:name].empty? ? self.client : self.client = client
     end
 
     def start_time

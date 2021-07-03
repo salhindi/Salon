@@ -11,11 +11,14 @@
   </head>
   
   <body>
+
   <div class="container">
-    <% if !logged_in? %>
-      <%= link_to "Login", login_path %>
-      <% else %>
     <nav class="navbar">
+      <% if !logged_in? %>
+        <%= link_to "Login", login_path %>
+     
+      <% else %>
+    
       <%= link_to 'Home', '/users' %><br>
       <%= link_to "Appointments", '/appointments' %>
       <%= link_to 'Clients', '/clients' %> |
@@ -26,9 +29,9 @@
       <%= link_to 'Stylists', '/stylists'%>
     <br>
       <%= link_to 'Logout', '/logout', method: :delete %>
-    <nav>
+    </nav>
    <% end %>
-   <div>
+   </div>
   <div class="container">
     <%= yield %>
   </div>

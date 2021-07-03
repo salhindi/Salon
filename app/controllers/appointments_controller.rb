@@ -28,7 +28,7 @@ class AppointmentsController < ApplicationController
 
     def create
         if same_stylist
-            @appointment = @stylist.appointments.build 
+            @appointment = @stylist.appointments.build(appt_params) 
         elsif same_client
             @appointment = @client.appointments.build(appt_params)
         else
