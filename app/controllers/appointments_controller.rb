@@ -2,7 +2,9 @@ class AppointmentsController < ApplicationController
     before_action :require_login
 
     def index
-        if same_client || same_stylist
+        if same_stylist
+            @appointment = @stylist.appointments.build 
+        elsif same_client
             start_date = params.fetch(:start_date, Date.today).to_date
             @appointments = @client.appointments.where(day: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
         else
@@ -13,7 +15,9 @@ class AppointmentsController < ApplicationController
       
 
     def new
-        if same_client || same_stylist
+        if same_stylist
+            @appointment = @stylist.appointments.build 
+        elsif same_client 
             @appointment = @client.appointments.build 
         else
             @appointment = Appointment.new
@@ -22,7 +26,9 @@ class AppointmentsController < ApplicationController
     end
 
     def create
-        if same_client || same_stylist
+        if same_stylist
+            @appointment = @stylist.appointments.build 
+        elsif same_client
             @appointment = @client.appointments.build(appt_params)
         else
             @appointment = Appointment.new(appt_params)

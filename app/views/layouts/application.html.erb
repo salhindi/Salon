@@ -8,19 +8,29 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-   <%= link_to 'Home', '/users' %><br>
-    <%= link_to 'Clients', '/clients' %> |
-    <%= link_to "Add a Client", '/clients/new' %> |
-    <%= link_to 'Book Appointment', '/appointments/new' %>
-    <br>
-    <%= link_to 'Add a New Stylist to the team!', '/stylists/new' %> |
-    <%= link_to 'Stylists', '/stylists'%>
-    <br>
-    <%= link_to 'Logout', '/logout', method: :delete %>
   </head>
+  
   <body>
-   
-
+  <div class="container">
+    <% if !logged_in? %>
+      <%= link_to "Login", login_path %>
+      <% else %>
+    <nav class="navbar">
+      <%= link_to 'Home', '/users' %><br>
+      <%= link_to "Appointments", '/appointments' %>
+      <%= link_to 'Clients', '/clients' %> |
+      <%= link_to "Add a Client", '/clients/new' %> |
+      <%= link_to 'Book Appointment', '/appointments/new' %>
+    <br>
+      <%= link_to 'Add a New Stylist to the team!', '/stylists/new' %> |
+      <%= link_to 'Stylists', '/stylists'%>
+    <br>
+      <%= link_to 'Logout', '/logout', method: :delete %>
+    <nav>
+   <% end %>
+   <div>
+  <div class="container">
     <%= yield %>
+  </div>
   </body>
 </html>

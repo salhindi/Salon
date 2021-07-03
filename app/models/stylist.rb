@@ -9,4 +9,6 @@ class Stylist < ApplicationRecord
 
     has_many :appointments
     has_many :clients, through: :appointments
+
+    scope :alphabetical, -> { Stylist.order("name ASC") }
 end
