@@ -3,7 +3,8 @@ class AppointmentsController < ApplicationController
 
     def index
         if same_stylist
-            @appointment = @stylist.appointments.build 
+            start_date = params.fetch(:start_date, Date.today).to_date
+            @appointments = @stylist.appointments.where(day: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week) 
         elsif same_client
             start_date = params.fetch(:start_date, Date.today).to_date
             @appointments = @client.appointments.where(day: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)

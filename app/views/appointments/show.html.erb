@@ -1,12 +1,12 @@
-<h1> Appointment with <%= appt_client_name %> </h1>
-<h3> Date: <%= @appointment.show_date %> <br> </h3> 
+<h3>Appointment with <%= appt_client_name %></h3>
+Date: <%= @appointment.show_date %> <br> 
  <br>
 <%= @appointment.services %>    
 $<%= @appointment.price %> USD <br>
 
 <%= appt_client_name %>'s Phone Number: <%= appt_client_number %>
 <br><br>
-<h2> Stylist Assigned: <%= appt_stylist_name %> <h2>
+Stylist Assigned: <%= appt_stylist_name %>
 Projected Duration: <%= @appointment.length %> hr
 
 <br>

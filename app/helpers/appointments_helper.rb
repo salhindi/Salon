@@ -11,7 +11,5 @@ module AppointmentsHelper
         number_to_phone(@appointment.client.phone_number)
     end
 
-    def show_date
-        self.day.strftime("%B %d,%Y, %l:%M %p")
-    end
+  
 end
