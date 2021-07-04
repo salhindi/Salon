@@ -13,9 +13,8 @@ module AppointmentsHelper
 
     def if_appt_today
         @appointments.each do |appointment|
-        #if @appointment.day.present?# && 
             if appointment.day = Date.today
-                appointment.day.strftime("%B %d, %Y, %l:%M %p")
+                # appointment.day.strftime("%B %d, %Y, %l:%M %p")
             end
         end
     end

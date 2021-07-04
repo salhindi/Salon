@@ -3,7 +3,7 @@
 
   <% appointments.each do |appointment| %>
     <div>
-Client: <%= appointment.client.name %>
+Client: <%= link_to appointment.client.name, appointment_path(appointment) %>
       <br> Stylist: <%= appointment.stylist.name %>
       <br>
       <%= appointment.day.strftime("%l:%M %p") %>
@@ -14,4 +14,4 @@ Client: <%= appointment.client.name %>
   <% end %>
 <% end %>
 
-<%= render partial: "todays_appointments" %>
+ <%= render partial: "todays_appointments" %>

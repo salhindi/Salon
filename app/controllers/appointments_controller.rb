@@ -78,4 +78,5 @@ class AppointmentsController < ApplicationController
     def same_stylist
         params[:stylist_id] && @stylist = Stylist.find_by_id(params[:stylist_id])
     end
+
 end
