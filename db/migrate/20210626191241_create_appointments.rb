@@ -7,6 +7,7 @@ class CreateAppointments < ActiveRecord::Migration[6.1]
       t.integer :length
       t.integer :stylist_id
       t.integer :client_id
+      t.integer :user_id
       
 
       t.timestamps

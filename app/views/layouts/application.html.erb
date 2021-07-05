@@ -17,6 +17,9 @@
     <nav class="navbar">
       <% if !logged_in? %>
         <%= link_to "Login", login_path %>
+        <%= link_to "Create A New Account", signup_path %>
+        
+        <%= link_to "Google Login", "/auth/google_oauth2", method: :get %>
      
       <% else %>
     
@@ -32,6 +35,11 @@
       <%= link_to 'Logout', '/logout', method: :delete %>
     </nav>
    <% end %>
+   <% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
    </div>
    </div>
 

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-    validates :name, :username, :email, presence: :true, on: :account_setup
-    validates :username, :email,  uniqueness: :true, on: :account_setup
+    validates :name, :username, :email, :salon_name, :name, presence: :true
+    validates :username, :email,  uniqueness: :true
+  
 
     has_secure_password
 
@@ -19,4 +20,5 @@ class User < ApplicationRecord
           user.save!
         end
       end
+
 end

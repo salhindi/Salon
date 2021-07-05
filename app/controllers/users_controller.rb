@@ -13,10 +13,13 @@ class UsersController < ApplicationController
     def create
         if logged_in?
             redirect_to root_path
-        elsif @user = User.new(user_params)
+        end
+
+        @user = User.new(user_params)
+        if @user.valid?
          @user.save
             session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            redirect_to user_path(@user.id)
         else
             render :new
         end

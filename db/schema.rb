@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_06_26_192527) do
     t.integer "length"
     t.integer "stylist_id"
     t.integer "client_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

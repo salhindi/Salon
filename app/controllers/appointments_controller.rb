@@ -2,19 +2,18 @@ class AppointmentsController < ApplicationController
     before_action :require_login
 
     def index
-        if same_stylist
+        if same_stylist 
             start_date = params.fetch(:start_date, Date.today).to_date
             @appointments = @stylist.appointments.where(day: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week) 
         elsif same_client
             start_date = params.fetch(:start_date, Date.today).to_date
             @appointments = @client.appointments.where(day: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
-        else
+        else 
             start_date = params.fetch(:start_date, Date.today).to_date
-            @appointments = Appointment.where(day: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
+            @appointments = Appointment.where(day: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week, user_id: current_user.id)
         end
-      end
+    end
       
-
     def new
         if same_stylist
             @appointment = @stylist.appointments.build 
@@ -32,7 +31,7 @@ class AppointmentsController < ApplicationController
         elsif same_client
             @appointment = @client.appointments.build(appt_params)
         else
-            @appointment = Appointment.new(appt_params)
+            @appointment = Appointment.new(appt_params.merge(user_id: current_user.id))
         end
 
         if @appointment.save
@@ -44,10 +43,23 @@ class AppointmentsController < ApplicationController
     
     def show 
         @appointment = Appointment.find(params[:id])
+        if @appointment.client.user_id != current_user.id
+
+        flash[:alert]= 'Not your Client'
+            redirect_to root_path
+        else
+            @appointment = Appointment.find(params[:id])
+        end
     end
 
     def edit
         @appointment = Appointment.find_by(params[:id])
+        if @appointment.client.user_id != current_user.id
+            flash[:alert]= 'Not your Client'
+            redirect_to edit_appointment_path(@appointment)
+        else
+            @appointment = Appointment.find_by(params[:id])
+        end
     end
 
     def update
@@ -68,7 +80,7 @@ class AppointmentsController < ApplicationController
     private
 
     def appt_params
-        params.require(:appointment).permit(:day, :services, :price, :length, :stylist_id, :client_id, client_attributes:[:name, :phone_number, :user_id])
+        params.require(:appointment).permit(:day, :services, :price, :length, :stylist_id, :user_id, :client_id, client_attributes:[:name, :phone_number, :user_id])
     end
 
     def same_client

@@ -2,7 +2,7 @@ class StylistsController < ApplicationController
     before_action :require_login
 
     def index
-        @stylist = Stylist.all.alphabetical
+        @stylist = Stylist.all.alphabetical.where(user_id: current_user.id)
     end
 
     def new

@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
 
 
     def index
-        @client = Client.all.alphabetical
+        @client = Client.all.alphabetical.where(user_id: current_user.id)
     end
 
     def new
@@ -21,6 +21,9 @@ class ClientsController < ApplicationController
 
     def show
         @client = Client.find(params[:id])
+        if @client.user_id = current_user.id
+            @client = Client.find(params[:id])
+        end
     end
 
     def edit

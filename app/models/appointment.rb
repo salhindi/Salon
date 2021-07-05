@@ -1,4 +1,5 @@
 class Appointment < ApplicationRecord
+    belongs_to :user
     belongs_to :client
     belongs_to :stylist
 
@@ -8,6 +9,8 @@ class Appointment < ApplicationRecord
     validate :stylist_appt_unique_date, on: :create
 
     validate :appointment_cannot_be_in_the_past
+
+    # scope :current_users_appts
 
 
      accepts_nested_attributes_for :client
@@ -36,16 +39,8 @@ class Appointment < ApplicationRecord
         if day.present? && day < Date.today
           errors.add(:appointment, "can't be in the past")
         end
-      end
+    end
 
-    
-    #   def if_appt_today
-    #     @appointments.each do |appointment|
-    #         if appointment.day = Date.today
-    #             # appointment.day.strftime("%B %d, %Y, %l:%M %p")
-    #         end
-    #     end
-    # end
 
     
 end
