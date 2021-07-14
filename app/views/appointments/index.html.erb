@@ -4,9 +4,13 @@
   <% appointments.each do |appointment| %>
     <div>
 Client: <%= link_to appointment.client.name, appointment_path(appointment) %>
+  <% if !appointment.stylist %>
+    <%= link_to "Assign Stylist", edit_appointment_path(appointment),  {:style=>'color: red;'}  %>
+    <% else %>
       <br> Stylist: <%= appointment.stylist.name %>
       <br>
       <%= appointment.day.strftime("%l:%M %p") %>
+      <% end %>
 
 
 

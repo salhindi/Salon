@@ -1,7 +1,12 @@
+<% if @client.empty? %>
+    <p>No Clients Yet!</p>
+    <%= link_to "Add Client", new_client_path %>
+    <% else %>
 <% @client.each do |client| %>
     <br><%= link_to "#{client.name.capitalize}", client_path(client) %><br>
 
 <%= link_to "Appointments", client_appointments_path(client) %> |
 
 <%= link_to "Book Appointment", new_client_appointment_path(client) %>
+<% end %>
 <% end %>

@@ -3,13 +3,20 @@ Stylist <h2> <%= client_name %>'s Appointments:</h2>
 <ul>
 <% @client.appointments.each do |appt| %>
         <li><%= appt.day.strftime("%B %d,%Y, %l:%M %p" ) %> with
+         <% if !appt.stylist %>
+    <%= link_to "Assign Stylist", edit_appointment_path(appt),  {:style=>'color: red;'}  %>
+    <% else %>
 <%= appt.stylist.name.capitalize %></li>
 <br><br>
 <%= client_name %>'s Contact Info: <%= client_number %>
+<% end %>
 <% end %>
 </ul>
 <p><%= link_to "Appointments", client_appointments_path(@client) %> |
 
 <%= link_to "Book Appointment", new_client_appointment_path(@client) %></p>
 
-<%= link_to "Edit Client Info", edit_client_path%>
+<%= link_to "Edit Client Info", edit_client_path(@client)%>
+
+<%= button_to "Delete", client_path(@client), method: :delete %>
+

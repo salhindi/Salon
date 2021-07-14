@@ -23,7 +23,7 @@ class StylistsController < ApplicationController
     end
 
     def edit
-        @stylist = Stylist.find_by(params[:id])
+        @stylist = Stylist.find(params[:id])
     end
 
     def update
@@ -33,6 +33,12 @@ class StylistsController < ApplicationController
         else
             render :edit 
         end
+    end
+
+    def destroy
+        @stylist = Stylist.find(params[:id])
+        @stylist.destroy
+        redirect_to root_path
     end
 
     private

@@ -9,7 +9,7 @@ class Client < ApplicationRecord
 
     scope :alphabetical, -> { Client.order(name: :asc)  }
 
-    has_many :appointments
+    has_many :appointments, dependent: :destroy
     has_many :stylists, through: :appointments
 
     

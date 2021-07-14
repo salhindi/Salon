@@ -53,12 +53,13 @@ class AppointmentsController < ApplicationController
     end
 
     def edit
-        @appointment = Appointment.find_by(params[:id])
+        @appointment = Appointment.find(params[:id])
+        
         if @appointment.client.user_id != current_user.id
             flash[:alert]= 'Not your Client'
             redirect_to edit_appointment_path(@appointment)
         else
-            @appointment = Appointment.find_by(params[:id])
+            @appointment = Appointment.find(params[:id])
         end
     end
 

@@ -27,7 +27,7 @@ class ClientsController < ApplicationController
     end
 
     def edit
-        @client = Client.find_by(params[:id])
+        @client = Client.find(params[:id])
     end
 
     def update
@@ -37,6 +37,12 @@ class ClientsController < ApplicationController
         else
             render :edit 
         end
+    end
+
+    def destroy
+        @client = Client.find(params[:id])
+        @client.destroy
+        redirect_to root_path
     end
 
     private

@@ -7,10 +7,13 @@
         <li><%= appointment.client.name.titleize %> on <%= appointment.show_date %></h3>
             <br>
         <%= appointment.services.titleize %> |  $<%= appointment.price %> USD <br>
-            <br>
+            <br>  <% if !appointment.stylist %>
+             <%= link_to "Assign Stylist", edit_appointment_path(appointment), {:style=>'color: red;'} %>
+    <% else %>
         Stylist Assigned: <%= appointment.stylist.name.titleize %> | Projected Duration: <%= appointment.length %> hr</li>
             <br><br>
     <ul>
+    <% end %>
         <%= link_to "Edit Appointment", edit_appointment_path(appointment)%> 
             <br>
     <%= button_to "Cancel", appointment_path(appointment), method: :delete, :onclick=> "return confirm('Are you sure you want to delete this item?')" %>

@@ -10,14 +10,11 @@ class Appointment < ApplicationRecord
 
     validate :appointment_cannot_be_in_the_past
 
-    # scope :current_users_appts
-
-
      accepts_nested_attributes_for :client
 
     def client_attributes=(client_params)
         {name: "Client"}
-        Client.find_or_create_by(client_params)
+        Client.find_or_create_by(client_params) 
         client_params[:name].empty? ? self.client : self.client = client
     end
 
