@@ -1,5 +1,4 @@
 <%= render partial: "layouts/errors", locals: { object: @appointment } %>
-<%= render partial: "layouts/errors", locals: { object: @appointment.client } %>
 
 <%= form_for [@client, @appointment] do |f| %>
    
@@ -16,10 +15,10 @@
         <%= f.number_field :length %><br> hrs
 
     <%= f.label :stylist_id %>
-        <%= f.collection_select :stylist_id, Stylist.all, :id, :name, include_blank: true %><br>
+        <%= f.collection_select :stylist_id, Stylist.all.where(user_id: current_user.id), :id, :name, include_blank: true %><br>
           
           <%= f.label :client_id %>
-        <%= f.collection_select :client_id, Client.all, :id, :name, include_blank: true %><br>
+        <%= f.collection_select :client_id, Client.all.where(user_id: current_user.id), :id, :name, include_blank: true %><br>
   
     <%= f.submit %>
   
