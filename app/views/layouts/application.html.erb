@@ -25,14 +25,15 @@
     
       <%= link_to 'Home', '/users' %><br>
       <%= link_to "Appointments Calendar", '/appointments' %>
-      <%= link_to 'Clients', '/clients' %> |
-      <%= link_to "Add a Client", '/clients/new' %> |
+      <%= link_to 'Clients', clients_path %> |
+      <%= link_to "Add a Client", new_client_path %> |
       <%= link_to 'Book Appointment', '/appointments/new' %>
     <br>
-      <%= link_to 'Add a New Stylist to the team!', '/stylists/new' %> |
-      <%= link_to 'Stylists', '/stylists'%>
+      <%= link_to 'Add a New Stylist to the team!', new_stylist_path %> |
+      <%= link_to 'Stylists', stylists_path %>
     <br>
-      <%= link_to 'Logout', '/logout', method: :delete %>
+      <%= link_to 'Logout', logout_path, method: :delete %>
+      
     </nav>
    <% end %>
    <% flash.each do |type, msg| %>
