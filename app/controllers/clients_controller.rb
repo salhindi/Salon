@@ -1,13 +1,12 @@
 class ClientsController < ApplicationController
     before_action :require_login
-
-
+    
     def index
         @client = Client.all.alphabetical.where(user_id: current_user.id)
     end
 
     def new
-        @client = Client.new
+        @client = current_user.clients.build
     end
 
     def create

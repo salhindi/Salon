@@ -6,7 +6,7 @@ class StylistsController < ApplicationController
     end
 
     def new
-        @stylist = Stylist.new
+        @stylist = current_user.stylists.build
     end
 
     def create

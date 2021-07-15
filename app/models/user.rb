@@ -7,8 +7,8 @@ class User < ApplicationRecord
 
     
     has_many :appointments, through: :stylists
-    has_many :stylists
-    has_many :clients
+    has_many :stylists, dependent: :destroy
+    has_many :clients, dependent: :destroy
 
     def self.from_omniauth(auth)
         where(email: auth.info.email).first_or_initialize do |user|

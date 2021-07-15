@@ -32,13 +32,14 @@ class AppointmentsController < ApplicationController
             @appointment = @client.appointments.build(appt_params)
         else
             @appointment = Appointment.new(appt_params.merge(user_id: current_user.id))
+            # byebug
         end
-
         if @appointment.save
             redirect_to appointment_path(@appointment)
         else 
             render :new
         end
+    
     end
     
     def show 

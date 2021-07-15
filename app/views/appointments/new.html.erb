@@ -20,24 +20,25 @@
           <%= f.label :client_id %>
         <%= f.collection_select :client_id, Client.all.where(user_id: current_user.id), :id, :name, include_blank: true %><br>
   
-    <%= f.submit %>
-  
     <br><br>
 
     <% if !params[:client_id] %>
 <h1> Add a new client! </h1>
-   
-      <%= f.fields_for :client do |f| %>
-        <%= f.label :name %>
-            <%= f.text_field :name %><br>
+<%= render partial: "layouts/errors", locals: { object: @appointment.client } %>
 
-        <%= f.label :phone_number %>
-            <%= f.number_field :phone_number %><br>
+   
+      <%= f.fields_for :client, Client.new do |client_attr| %>
+        <%= client_attr.label :name %>
+            <%= client_attr.text_field :name %><br>
+
+        <%= client_attr.label :phone_number %>
+            <%= client_attr.number_field :phone_number %><br>
     
-        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= client_attr.hidden_field :user_id, value: current_user.id %>
         
-    <%= f.submit %>
+  
     <% end %>
+      <%= f.submit %>
     <% end %>
 <% end %>
 

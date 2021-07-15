@@ -1,5 +1,5 @@
 class Stylist < ApplicationRecord
-    belongs_to :user 
+    # belongs_to :user 
 
     validates :name, :phone_number, :yrs_experience, presence: :true
     validates :phone_number,  uniqueness: :true

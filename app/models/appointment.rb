@@ -1,6 +1,6 @@
 class Appointment < ApplicationRecord
-    belongs_to :user, optional: true
     belongs_to :client
+    # validates_presence_of :client
     belongs_to :stylist
 
     validates :day, :services, :price, :length, :stylist_id, presence: :true
@@ -10,12 +10,11 @@ class Appointment < ApplicationRecord
 
     validate :appointment_cannot_be_in_the_past
 
-     accepts_nested_attributes_for :client
-
     def client_attributes=(client_params)
-        {name: "Client"}
-        Client.find_or_create_by(client_params) 
-        client_params[:name].empty? ? self.client : self.client = client
+         client = Client.find_or_create_by(client_params) 
+         if client.valid?
+            self.client = client 
+         end
     end
 
     def start_time
