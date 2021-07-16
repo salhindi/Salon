@@ -1,9 +1,6 @@
+<%= render partial: "layouts/errors", locals: { object: @client } %>
 
-<% flash.each do |type, msg| %>
-  <div>
-    <%= msg %>
-  </div>
-<% end %>
+
 
 <%= render partial: "form", locals: { client: @client } %>
     

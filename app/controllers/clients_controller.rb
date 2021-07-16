@@ -22,7 +22,11 @@ class ClientsController < ApplicationController
         @client = Client.find(params[:id])
         if @client.user_id = current_user.id
             @client = Client.find(params[:id])
+        else
+            redirect_to clients_path
         end
+    rescue ActiveRecord::RecordNotFound
+        redirect_to root_url, :flash => { :error => "Record not found." }
     end
 
     def edit

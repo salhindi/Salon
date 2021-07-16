@@ -20,6 +20,8 @@ class StylistsController < ApplicationController
 
     def show
         @stylist = Stylist.find(params[:id])   
+    rescue ActiveRecord::RecordNotFound
+        redirect_to root_url, :flash => { :error => "Record not found." }
     end
 
     def edit
