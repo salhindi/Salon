@@ -6,7 +6,7 @@ class User < ApplicationRecord
     has_secure_password
 
     
-    has_many :appointments, through: :stylists
+    has_many :appointments, through: :clients
     has_many :stylists, dependent: :destroy
     has_many :clients, dependent: :destroy
 

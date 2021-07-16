@@ -2,16 +2,11 @@ class Appointment < ApplicationRecord
     belongs_to :client
     belongs_to :stylist
 
-    validates :day, :services, :price, :length, :stylist_id, presence: :true
+    validates :day, :services, :price, :length, presence: :true
     validates_associated :client
 
-    # validate :stylist_appt_unique_date, on: :create
 
-    # scope :double_booked, ->(appt) {
-    #     where(%q{ (day, (day + length)) OVERLAPS (?, ?)
-    #         } appt.day, appt.day)
-    # }
-
+ 
     validate :appointment_cannot_be_in_the_past
 
     def client_attributes=(client_params)
@@ -25,12 +20,6 @@ class Appointment < ApplicationRecord
         self.day
     end
 
-
-     # def stylist_appt_unique_date
-    #     if self.stylist_id && self.day 
-    #         errors.add(:day, "The stylist is already assigned to this day")
-    #     end
-    # end
 
     def show_date
         self.day.strftime("%B %d, %Y, %l:%M %p")
