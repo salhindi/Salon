@@ -1,5 +1,5 @@
 class Client < ApplicationRecord
-    # belongs_to :user
+    belongs_to :user
 
     validates :name, :phone_number, presence: :true
     validates :phone_number,  uniqueness: :true

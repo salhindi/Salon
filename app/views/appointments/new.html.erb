@@ -12,7 +12,9 @@
         <%= f.number_field :price %> <br>
 
      <%= f.label :length , "Appointment Length" %>
-        <%= f.number_field :length %><br> hrs
+        <%= f.number_field :length %> minutes
+
+        <br>
 
     <%= f.label :stylist_id %>
         <%= f.collection_select :stylist_id, Stylist.all.where(user_id: current_user.id), :id, :name, include_blank: true %><br>
@@ -37,9 +39,10 @@
         <%= client_attr.hidden_field :user_id, value: current_user.id %>
         
   
+    <% end %> 
     <% end %>
       <%= f.submit %>
-    <% end %>
+   
 <% end %>
 
     

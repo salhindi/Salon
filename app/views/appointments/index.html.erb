@@ -9,7 +9,9 @@ Client: <%= link_to appointment.client.name, appointment_path(appointment) %>
     <% else %>
       <br> Stylist: <%= appointment.stylist.name %>
       <br>
-      <%= appointment.day.strftime("%l:%M %p") %>
+      <%= appointment.day.strftime("%l:%M %p") %><br>
+        <%= link_to "Edit Appointment", edit_appointment_path(appointment)%> 
+
       <% end %>
 
 
